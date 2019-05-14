@@ -1,0 +1,69 @@
+# azure-cli-playground
+
+azure cli usage examples
+
+```sh
+# version info
+az -v
+
+# help
+az -h
+
+# interactive login
+az login
+az logout
+
+az account show
+az account show | jq '.tenantId'
+
+az account list
+az account get-access-token
+
+az account list-locations
+
+# details of signed in user
+az ad signed-in-user show
+
+# ad
+az ad -h
+
+# ad service principals
+az ad sp -h
+
+# create a service principal and configure its access to Azure
+az ad sp create-for-rbac
+
+# list service principals
+az ad sp list
+
+# create resource group
+az group create --name "group01" --location eastus
+
+# list resource group names
+az group list | jq '.[].name'
+
+# delete resource group
+az group delete --name "group01"
+
+# deploy arm template examples
+az group deployment create --name "my-deployment-01" --resource-group "my-resource-group-01"   --template-file template.json --parameters @parameters.json
+
+az group deployment create   --name cosmosdbaccountdeployment01   --resource-group group01   --template-file azure-cosmos-db-account.json   --parameters name="account01" location="eastus" locationName="East US" defaultExperience="DocumentDB"
+
+# interactive/repl mode.  immediately exits / doesn't work as of 2019-05-14
+az interactive
+
+
+# list all resources
+az resource list
+
+az role assignment list
+
+az role definition list
+
+az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
+az role definition list | jq '.[].description'
+
+# list storage account
+az storage account list | jq '.[].name'
+```
