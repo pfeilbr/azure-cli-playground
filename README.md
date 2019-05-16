@@ -11,6 +11,10 @@ az -h
 
 # interactive login
 az login
+
+# log in with a service principal using client secret.
+az login --service-principal -u http://azure-cli-2019-05-09-16-09-40 -p '[CLIENT_SECRET_HERE]' --tenant brianpfeilgmail.onmicrosoft.com
+
 az logout
 
 az account show
