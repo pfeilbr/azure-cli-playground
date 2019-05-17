@@ -40,6 +40,15 @@ az ad sp create-for-rbac
 # list service principals
 az ad sp list
 
+# list role assignments for service principal
+az role assignment list --assignee 'http://azure-cli-2019-05-09-16-09-40'
+
+# list role assignments for user (user sign-in name)
+az role assignment list --assignee 'dev01@brianpfeilgmail.onmicrosoft.com'
+
+# list role assignments for user (object id)
+az role assignment list --assignee '38d35c72-5a26-464c-bbb3-c4487a1d4779'
+
 # create resource group
 az group create --name "group01" --location eastus
 
