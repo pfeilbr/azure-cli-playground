@@ -25,6 +25,10 @@ az account get-access-token
 
 az account list-locations
 
+# list account fields in table format
+az account list --output table --query '[].{Name:name, SubscriptionId:id, TenantId:tenantId}'
+
+
 # details of signed in user
 az ad signed-in-user show
 
