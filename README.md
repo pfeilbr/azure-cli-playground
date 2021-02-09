@@ -9,6 +9,9 @@ az -v
 # help
 az -h
 
+# find examples
+az find "az functionapp list"
+
 # interactive login
 az login
 
@@ -19,6 +22,8 @@ az logout
 
 az account show
 az account show | jq '.tenantId'
+
+TENANT_ID=$(az account show --query tenantId --output tsv)
 
 az account list
 az account get-access-token
@@ -43,6 +48,9 @@ az ad sp create-for-rbac
 
 # list service principals
 az ad sp list
+
+# list service principals with subset of properties
+az ad sp list --query "[].{id:appId, tenant:appOwnerTenantId, name:displayName}"
 
 # list role assignments for service principal
 az role assignment list --assignee 'http://azure-cli-2019-05-09-16-09-40'
@@ -72,6 +80,9 @@ az login --service-principal --username "http://service-principal-01" --password
 
 # show service principal details
 az ad sp show --id "http://service-principal-01"
+
+# get access token (Bearer) that can be used as `Authorization` header
+az account get-access-token --resource 'https://vault.azure.net'
 
 # create resource group
 az group create --name "group01" --location eastus
