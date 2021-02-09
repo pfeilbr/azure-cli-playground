@@ -82,6 +82,10 @@ az login --service-principal --username "http://service-principal-01" --password
 az ad sp show --id "http://service-principal-01"
 
 # get access token (Bearer) that can be used as `Authorization` header
+# current user
+az account get-access-token
+
+# for specific resource
 az account get-access-token --resource 'https://vault.azure.net'
 
 # create resource group
