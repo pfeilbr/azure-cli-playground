@@ -79,6 +79,7 @@ az ad sp credential reset --name "http://service-principal-01"
 az login --service-principal --username "http://service-principal-01" --password "09tGSBcRsl_Gml7DI7VkRniFu_r_xxxxxx" --tenant "b0579be4-503f-48ca-9bd2-ca22100857dd"
 
 # get access token (bearer)
+# NOTE: must be logged in with `service-principal-01` above for this example
 ACCESS_TOKEN=$(az account get-access-token --resource 'https://brianpfeilmyfn01.azurewebsites.net')
 
 # call endpoint protected by azure ad.  e.g. functions function endpoint
