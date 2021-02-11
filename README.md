@@ -80,7 +80,10 @@ az login --service-principal --username "http://service-principal-01" --password
 
 # get access token (bearer)
 # NOTE: must be logged in with `service-principal-01` above for this example
+# or may need to add client id to authorize application.  see following screenshot
+# <https://www.evernote.com/l/AAFJLMG88QhDgqehvtS8P-qkVuCcmFFUhCMB/image.png>
 ACCESS_TOKEN=$(az account get-access-token --resource 'https://brianpfeilmyfn01.azurewebsites.net')
+
 
 # call endpoint protected by azure ad.  e.g. functions function endpoint
 curl --header "Authorization: Bearer ${ACCESS_TOKEN}" https://brianpfeilmyfn01.azurewebsites.net/api/HttpExample
