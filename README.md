@@ -98,6 +98,9 @@ az account get-access-token
 # for specific resource
 az account get-access-token --resource 'https://vault.azure.net'
 
+# list app registrations
+az ad app list --query '[].{displayName: displayName}' --output table
+
 # create resource group
 az group create --name "group01" --location eastus
 
